@@ -1,0 +1,17 @@
+{
+  "name": "Sistema Anti-Bullying",
+  "short_name": "Anti-Bullying",
+  "description": "Plataforma segura para registrar e acompanhar denúncias de bullying escolar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "https://base44.com/logo_v2.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
