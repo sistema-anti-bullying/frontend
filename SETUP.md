@@ -7,42 +7,80 @@ Você está vendo erros de 404 porque:
 ```
 api/apps/null/entities/User/me - Failed to load resource: 404
 api/apps/null/integration-endpoints/Core/UploadFile - Failed to load resource: 404
+Manifest fetch failed - code 404
 ```
 
 O `appId` está **null** porque faltam as credenciais da Base44.
 
 ---
 
-## ✅ Como Resolver
+## ✅ Como Resolver - Guia Passo a Passo
 
-### 1. Obtenha as Credenciais da Base44
+### 📌 PASSO 1: Acessar Base44
 
-1. Acesse **https://app.base44.com**
-2. Faça login ou crie uma conta
-3. Crie um novo projeto (se não tiver)
-4. Vá para **Settings** ou **API Keys**
-5. Copie:
-   - **App ID**
-   - **Functions Version**
-   - **App Base URL** (geralmente algo como `https://api.base44.com` ou similar)
+1. Abra seu navegador
+2. Acesse: **https://app.base44.com**
+3. Faça login com suas credenciais (ou crie uma conta se não tiver)
 
-### 2. Configure o `.env.local`
+### 📌 PASSO 2: Encontrar o Projeto
 
-Edite o arquivo `.env.local` nesta pasta:
+1. Na tela inicial, você verá uma lista de projetos
+2. Selecione o projeto **"Sistema Anti-Bullying"** (ou crie um novo com esse nome)
+3. Clique para entrar no projeto
 
-```env
-VITE_BASE44_APP_ID=seu_app_id_aqui
-VITE_BASE44_FUNCTIONS_VERSION=seu_version_aqui
-VITE_BASE44_APP_BASE_URL=sua_url_aqui
-```
+### 📌 PASSO 3: Localizar as Credenciais
 
-### 3. Reinicie o Servidor
+**Procure por:**
+- Menu lateral esquerdo: procure por **"Settings"**, **"Configurações"** ou **"API"**
+- OU no topo da página procure por um ícone de ⚙️ (engrenagem)
 
-```bash
-npm run dev
-```
+**Você deve encontrar uma seção com:**
+- **App ID** (também pode chamar "Application ID" ou "Client ID")
+- **Workspace ID** ou **Organization ID**
+- **Functions Version** (número, ex: "1" ou "v1")
+- **Base URL** ou **App Base URL** (exemplo: `https://app.base44.com` ou `https://api.base44.com`)
 
-O servidor recarregará automaticamente e os erros 404 desaparecerão.
+### 📌 PASSO 4: Copiar as Credenciais
+
+1. Abra o arquivo `.env.local` em:
+   ```
+   c:\Users\jarde\OneDrive\Desktop\frontend-repo\.env.local
+   ```
+
+2. Substitua os valores vazios:
+   ```env
+   # Antes (errado):
+   VITE_BASE44_APP_ID=
+   VITE_BASE44_FUNCTIONS_VERSION=
+   VITE_BASE44_APP_BASE_URL=http://localhost:5173
+
+   # Depois (correto):
+   VITE_BASE44_APP_ID=abc123xyz456
+   VITE_BASE44_FUNCTIONS_VERSION=1
+   VITE_BASE44_APP_BASE_URL=https://app.base44.com
+   ```
+
+3. **Exemplo Real:**
+   ```env
+   VITE_BASE44_APP_ID=f7a3c2b1e9d4k5m0
+   VITE_BASE44_FUNCTIONS_VERSION=2
+   VITE_BASE44_APP_BASE_URL=https://base44.com
+   ```
+
+### 📌 PASSO 5: Salvar e Reiniciar
+
+1. Salve o arquivo `.env.local` (Ctrl+S)
+2. Volte para o terminal onde está rodando `npm run dev`
+3. Pressione **Ctrl+C** para parar o servidor
+4. Digite novamente: `npm run dev`
+5. Abra/recarregue a página: **http://localhost:5173**
+
+### ✅ Pronto!
+
+Se as credenciais estiverem corretas, os erros 404 desaparecerão e você verá:
+- ✅ Login funcionando
+- ✅ Upload de arquivos funcionando
+- ✅ Dashboard carregando dados
 
 ---
 
